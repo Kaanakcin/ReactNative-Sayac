@@ -1,12 +1,35 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+  const[count ,setCount] = useState(0);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
+
+      <Button 
+        title='Increase' 
+        onPress={()=> {
+          setCount((pre) => pre + 1 );
+          }}
+          touchSoundDisabled={true} 
+          color={"red"} 
+      />
+      
+      <Button
+        title='Decrease' 
+        onPress={()=> {
+          setCount((prev) => prev - 1);
+          }}
+          touchSoundDisabled={true} 
+          color={"blue"} 
+      />
+
+       <Text style={{ fontSize: 40 }}>{count}</Text>
     </View>
+   
   );
 }
 
